@@ -1,11 +1,14 @@
 {
   "name": "cloud-browser-connector",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Client for connection with CloudBrowser.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "puppeteer": "^23.6.1"
+  }
 }
