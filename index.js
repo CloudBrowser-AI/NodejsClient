@@ -9,26 +9,24 @@ class CloudBrowserConnector {
 
     async connect() {
         try {
-            // Configure options for POST request
             const fetchOptions = {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${this.apiToken}`,
                     'Content-Type': 'application/json',
                 },
-                body: this.body ? JSON.stringify(this.body) : null, // optional
+                body: this.body ? JSON.stringify(this.body) : null,
             };
 
-            // Get WebSocket URL from remote browser
             const response = await fetch(this.serverUrl, fetchOptions);
-
             if (!response.ok) {
                 throw new Error(`Failed to fetch WebSocket URL: ${response.statusText}`);
             }
 
-            const WebSocketDebuggerUrl = await response.text();
+            // Parse the JSON response to get the WebSocketDebuggerUrl
+            const jsonResponse = await response.json();
+            const WebSocketDebuggerUrl = jsonResponse.address;  // Extract the actual WebSocket URL
 
-            // Connect Puppeteer to remote browser
             const browser = await puppeteer.connect({
                 browserWSEndpoint: WebSocketDebuggerUrl,
             });

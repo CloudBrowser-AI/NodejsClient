@@ -1,6 +1,6 @@
 {
   "name": "cloud-browser-connector",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Client for connection with CloudBrowser.",
   "main": "index.js",
   "scripts": {
